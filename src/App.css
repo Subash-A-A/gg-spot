@@ -1,38 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "VT323", monospace;
+}
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(121, 121, 121);
+}
+::-webkit-scrollbar-track {
+  background-color: rgb(43, 42, 42);
+}
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-around;
+  align-items: flex-end;
+  background: #444;
+  height: 100vh;
+}
+.side-section {
+  width: 20vw;
+  height: 95vh;
+  background: rgb(41, 41, 41);
+  margin-bottom: 30px;
+  text-align: center;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.center-section {
+  width: 55vw;
+  height: 85vh;
+  background: rgb(41, 41, 41);
+  margin-bottom: 30px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.filter {
+  margin: 10px;
+  border: 1px solid white;
+  width: 80%;
+}
+.list {
+  list-style: none;
+  overflow-y: scroll;
+  margin: 10px;
+}
+.category-list {
+  height: 25vh;
+}
+.submit-button {
+  padding: 15px 20px;
+  margin: 20px;
+  font-size: 20px;
+  border: none;
+  background-color: #444;
+  color: white;
+  transition: all 0.3s ease;
+  border-radius: 90px;
+}
+.submit-button:active {
+  background-color: rgb(19, 19, 19);
+}
+.submit-button:hover {
+  background-color: white;
+  color: black;
 }
