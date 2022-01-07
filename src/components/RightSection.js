@@ -53,7 +53,7 @@ function RightSection() {
     <div className="side-section">
       <div className="filter-container">
         <div className="filter">
-          <h1>Category</h1>
+          <h1 className="filter-heading">Category</h1>
           <div className="category-list list">
             {categoryArr.map((category) => (
               <h2>{category}</h2>
@@ -61,7 +61,7 @@ function RightSection() {
           </div>
         </div>
         <div className="filter">
-          <h1>Platform</h1>
+          <h1 className="filter-heading">Platform</h1>
           <div className="list">
             <h2>PC</h2>
             <h2>Browser</h2>
@@ -69,7 +69,7 @@ function RightSection() {
           </div>
         </div>
         <div className="filter">
-          <h1>Sort by</h1>
+          <h1 className="filter-heading">Sort by</h1>
           <div className="list">
             <h2>release-date</h2>
             <h2>popularity</h2>
