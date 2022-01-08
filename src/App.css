@@ -43,13 +43,10 @@
   justify-content: center;
   align-items: flex-start;
 }
-.searchbar {
+.search {
   margin: 20px 20px;
 }
-.searchbar input {
-  padding: 5px 20px;
-  font-size: 18px;
-}
+
 .games-container {
   padding: 0 20px;
   height: 95%;
@@ -106,7 +103,7 @@
 .game-div {
   width: 100%;
   cursor: pointer;
-  padding: 30px;
+  padding: 20px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -114,6 +111,13 @@
   border: 1px solid rgb(95, 196, 255);
   transition: all 0.3s ease;
 }
+.searchbar {
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+}
+
 .game-title {
   color: white;
 }

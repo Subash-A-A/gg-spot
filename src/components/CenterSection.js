@@ -32,8 +32,9 @@ function CenterSection() {
 
   return (
     <div className="center-section">
-      <div className="searchbar">
+      <div className="search">
         <input
+          className="searchbar"
           type="text"
           placeholder="Search..."
           onChange={(e) => {
