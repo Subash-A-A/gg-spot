@@ -34,7 +34,7 @@ function CenterSection() {
   return (
     <div className="center-section">
       {games.map((game) => (
-        <Game thumbnail={game.thumbnail} id={game.id} />
+        <Game thumbnail={game.thumbnail} id={game.id} key={game.id} />
       ))}
     </div>
   );
