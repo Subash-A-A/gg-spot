@@ -4,6 +4,7 @@ import Game from "./Game";
 
 function CenterSection() {
   const [games, setGames] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const getGames = () => {
@@ -29,19 +30,32 @@ function CenterSection() {
     getGames();
   }, []);
 
-  console.log(games);
-
   return (
     <div className="center-section">
-      {games.map((game) => (
-        <Game
-          thumbnail={game.thumbnail}
-          id={game.id}
-          title={game.title}
-          desc={game.short_description}
-          key={game.id}
+      <div className="searchbar">
+        <input
+          type="text"
+          placeholder="Search..."
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
         />
-      ))}
+      </div>
+      <div className="games-container">
+        {games
+          .filter((val) => {
+            return val.title.toLowerCase().includes(searchTerm.toLowerCase());
+          })
+          .map((game) => (
+            <Game
+              thumbnail={game.thumbnail}
+              id={game.id}
+              title={game.title}
+              desc={game.short_description}
+              key={game.id}
+            />
+          ))}
+      </div>
     </div>
   );
 }
