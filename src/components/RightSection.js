@@ -56,7 +56,9 @@ function RightSection() {
           <h1 className="filter-heading">Category</h1>
           <div className="category-list list">
             {categoryArr.map((category, index) => (
-              <h2 key={index}>{category}</h2>
+              <h2 className="category-name" key={index}>
+                {category}
+              </h2>
             ))}
           </div>
         </div>

@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=VT323&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -32,12 +34,13 @@
   color: white;
 }
 .center-section {
+  padding: 20px;
   width: 65vw;
-  height: 85vh;
+  height: 95vh;
   background: rgb(41, 41, 41);
   overflow-y: scroll;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   justify-content: flex-start;
   align-items: center;
 }
@@ -62,6 +65,7 @@
   overflow-y: scroll;
   margin: 10px;
 }
+
 .category-list {
   height: 25vh;
 }
@@ -85,17 +89,31 @@
   color: white;
 }
 .game-div {
-  margin: 20px 10px;
+  cursor: pointer;
+  padding: 30px;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px;
+  border: 1px solid rgb(95, 196, 255);
+  transition: all 0.3s ease;
+}
+.game-title {
+  color: white;
+}
+.game-desc {
+  color: rgb(175, 175, 175);
 }
 .game-thumbnail {
   object-fit: contain;
-  width: 280px;
+  width: 250px;
   transition: all 0.3s ease;
 }
-.game-thumbnail:hover {
+
+.game-div:hover {
+  background-color: rgba(95, 196, 255, 0.151);
+}
+.game-div:hover .game-thumbnail {
   transform: scale(1.08);
 }
 
@@ -103,9 +121,9 @@
 
 @media (max-width: 1395px) {
   .center-section {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
   .game-thumbnail {
-    width: 350px;
+    width: 150px;
   }
 }
