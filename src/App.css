@@ -9,7 +9,8 @@
   width: 7px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(121, 121, 121);
+  background-color: rgb(95, 196, 255);
+  border-radius: 100px;
 }
 ::-webkit-scrollbar-track {
   background-color: rgb(43, 42, 42);
@@ -33,6 +34,11 @@
   width: 55vw;
   height: 85vh;
   background: rgb(41, 41, 41);
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 .filter-container {
   display: flex;
@@ -59,6 +65,7 @@
   height: 25vh;
 }
 .submit-button {
+  cursor: pointer;
   padding: 15px 20px;
   margin: 20px;
   font-size: 20px;
@@ -68,10 +75,11 @@
   transition: all 0.3s ease;
   border-radius: 20px;
 }
+.submit-button:hover {
+  background-color: rgb(95, 196, 255);
+  color: black;
+}
 .submit-button:active {
   background-color: rgb(19, 19, 19);
-}
-.submit-button:hover {
-  background-color: white;
-  color: black;
+  color: white;
 }
