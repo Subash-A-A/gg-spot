@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react"
 import Game from "./Game"
-import { db } from "../firebase-config"
-import { collection, getDocs } from "firebase/firestore"
+import Axios from "axios"
 
 function CenterSection() {
   const [games, setGames] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
 
-  const gameCollectionRef = collection(db, "games")
-
   useEffect(() => {
     const getGames = async () => {
-      const data = await getDocs(gameCollectionRef)
-      setGames(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+      Axios.get("http://localhost:3001/").then((result) => {
+        setGames(result.data)
+      })
     }
     getGames()
   }, [])
