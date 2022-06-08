@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 function Game({ thumbnail, id, title, desc }) {
   return (
@@ -9,7 +9,7 @@ function Game({ thumbnail, id, title, desc }) {
         <p className="game-desc">{desc}</p>
       </div>
     </div>
-  );
+  )
 }
 
-export default Game;
+export default Game
