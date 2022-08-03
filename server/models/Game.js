@@ -19,7 +19,6 @@ const GameSchema = new mongoose.Schema({
   },
   game_url: {
     type: String,
-    required: true,
   },
   genre: {
     type: String,
@@ -43,7 +42,6 @@ const GameSchema = new mongoose.Schema({
   },
   freetogame_profile_url: {
     type: String,
-    required: true,
   },
 })
 

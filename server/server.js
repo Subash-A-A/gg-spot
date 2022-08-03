@@ -2,51 +2,59 @@ const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
 
-const GameModel = require("./models/Game")
+const gDB = require("./gameDBFunctions")
+const wDB = require("./wishListDBFunctions")
 
 const app = express()
+const app1 = express()
+
 app.use(express.json())
 app.use(cors())
+app1.use(express.json())
+app1.use(cors())
 
-mongoose.connect(
-  "mongodb+srv://username:mypassword@cluster0.b6wossn.mongodb.net/?retryWrites=true&w=majority",
-  {
+// link of cloudDB
+// mongodb+srv://username:mypassword@cluster0.b6wossn.mongodb.net/?retryWrites=true&w=majority
+mongoose
+  .connect("mongodb://localhost:27017/gameDB", {
     useNewUrlParser: true,
-  }
-)
-
-app.get("/demoGet", async (req, res) => {
-  const game = new GameModel({
-    id: 1,
-    title: "Dauntless",
-    thumbnail: "https://www.freetogame.com/g/1/thumbnail.jpg",
-    short_description:
-      "A free-to-play, co-op action RPG with gameplay similar to Monster Hunter.",
-    game_url: "https://www.freetogame.com/open/dauntless",
-    genre: "MMORPG",
-    platform: "PC (Windows)",
-    publisher: "Phoenix Labs",
-    developer: "Phoenix Labs, Iron Galaxy",
-    release_date: "2019-05-21",
-    freetogame_profile_url: "https://www.freetogame.com/dauntless",
   })
+  .then(console.log("Connected to db"))
 
-  await game
-    .save()
-    .then(res.send("Inserted Data"))
-    .catch((err) => console.log(err))
+app.post("/insert", (req, res) => {
+  gDB.insertGame(req, res)
+})
+app.get("/", (req, res) => {
+  gDB.getGames(req, res)
+})
+app.post("/get-details", (req, res) => {
+  gDB.getGameByID(req, res)
+})
+app.post("/", (req, res) => {
+  gDB.getGamesByGenre(req, res)
+})
+app.post("/remove", (req, res) => {
+  gDB.removeGameByID(req, res)
+})
+app.post("/update", (req, res) => {
+  gDB.updateGameByID(req, res)
 })
 
-app.get("/", (req, res) => {
-  GameModel.find({}, (err, result) => {
-    if (err) {
-      res.send(err)
-    } else {
-      res.send(result)
-    }
-  })
+app1.post("/add-to-wishlist", (req, res) => {
+  wDB.insertIntoWishlist(req, res)
+})
+
+app1.get("/", (req, res) => {
+  wDB.getGames(req, res)
+})
+
+app1.post("/remove", (req, res) => {
+  wDB.removeById(req, res)
 })
 
 app.listen(3001, () => {
-  console.log("Listening on port 3001")
+  console.log("App: Listening on port 3001")
+})
+app1.listen(3002, () => {
+  console.log("App1: Listening on port 3002")
 })

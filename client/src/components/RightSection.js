@@ -1,17 +1,21 @@
-import React from "react";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import logo from "./gg_logo.png"
 
 function RightSection() {
+  const navigate = useNavigate()
+
   const categoryArr = [
-    "mmorpg",
-    "shooter",
-    "strategy",
-    "moba",
-    "racing",
-    "sports",
-    "social",
-    "sandbox",
+    "MMORPG",
+    "Shooter",
+    "Strategy",
+    "MOBA",
+    "Racing",
+    "Sports",
+    "Social",
+    "Sandbox",
     "open-world",
-    "survival",
+    "Survival",
     "pvp",
     "pve",
     "pixel",
@@ -35,11 +39,11 @@ function RightSection() {
     "3d",
     "2d",
     "anime",
-    "fantasy",
+    "Fantasy",
     "sci-fi",
-    "fighting",
+    "Fighting",
     "action-rpg",
-    "action",
+    "Action",
     "military",
     "martial-arts",
     "flight",
@@ -47,16 +51,39 @@ function RightSection() {
     "tower-defense",
     "horror",
     "mmorts",
-  ];
+  ]
 
   return (
-    <div className="side-section">
+    <div className="side-section right-section">
+      <img
+        src={logo}
+        alt="GG Logo"
+        className="gg-logo"
+        onClick={() => navigate("/")}
+      />
+
       <div className="filter-container">
+        <div className="icons-container filter">
+          <ul className="page-navigation-list">
+            <li
+              onClick={() => navigate("/")}
+              className="navbar-links category-name"
+            >
+              Home
+            </li>
+          </ul>
+        </div>
         <div className="filter">
           <h1 className="filter-heading">Category</h1>
           <div className="category-list list">
             {categoryArr.map((category, index) => (
-              <h2 className="category-name" key={index}>
+              <h2
+                className="category-name"
+                key={index}
+                onClick={() => {
+                  navigate("/genre/" + category)
+                }}
+              >
                 {category}
               </h2>
             ))}
@@ -65,24 +92,23 @@ function RightSection() {
         <div className="filter">
           <h1 className="filter-heading">Platform</h1>
           <div className="list">
-            <h2>PC</h2>
-            <h2>Browser</h2>
-            <h2>All</h2>
+            <h2 className="category-name">PC</h2>
+            <h2 className="category-name">Browser</h2>
+            <h2 className="category-name">All</h2>
           </div>
         </div>
-        <div className="filter">
+        {/* <div className="filter">
           <h1 className="filter-heading">Sort by</h1>
           <div className="list">
-            <h2>release-date</h2>
-            <h2>popularity</h2>
-            <h2>alphabetical </h2>
-            <h2>relevance </h2>
+            <h2 className="category-name">release-date</h2>
+            <h2 className="category-name">popularity</h2>
+            <h2 className="category-name">alphabetical </h2>
+            <h2 className="category-name">relevance </h2>
           </div>
-        </div>
-        <button className="submit-button">Submit</button>
+        </div> */}
       </div>
     </div>
-  );
+  )
 }
 
-export default RightSection;
+export default RightSection

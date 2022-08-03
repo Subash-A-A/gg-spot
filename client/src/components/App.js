@@ -1,18 +1,26 @@
 import React from "react"
-import CenterSection from "./CenterSection"
+import "../App.css"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import LeftSection from "./LeftSection"
 import RightSection from "./RightSection"
-import "../App.css"
+import CenterSection from "./CenterSection"
+import GameDB from "./GameDB"
 
 function App() {
   return (
-    <div className="App">
-      <div className="sections">
-        <LeftSection />
-        <CenterSection />
-        <RightSection />
+    <Router>
+      <div className="App">
+        <div className="sections">
+          <LeftSection />
+          <Routes>
+            <Route path="/" element={<CenterSection />}></Route>
+            <Route path="/genre/:genre" element={<CenterSection />}></Route>
+            <Route path="/gamedb/*" element={<GameDB />}></Route>
+          </Routes>
+          <RightSection />
+        </div>
       </div>
-    </div>
+    </Router>
   )
 }
 

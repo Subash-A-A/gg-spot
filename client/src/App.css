@@ -1,15 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=VT323&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fascinate&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "VT323", monospace;
+  /* font-family: "Bangers", cursive; */
+  /* font-family: "Fascinate", cursive; */
+  transition: all 0.3s ease;
+}
+::placeholder {
+  color: rgb(95, 196, 255);
 }
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 3px;
+  height: 3px;
 }
 ::-webkit-scrollbar-thumb {
   background-color: rgb(95, 196, 255);
@@ -17,6 +24,13 @@
 }
 ::-webkit-scrollbar-track {
   background-color: rgb(43, 42, 42);
+}
+
+.gg-logo {
+  cursor: pointer;
+  object-fit: contain;
+  width: 150px;
+  margin-top: 20px;
 }
 .sections {
   display: flex;
@@ -31,8 +45,20 @@
   height: 95vh;
   background: rgb(41, 41, 41);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: white;
 }
+.left-section {
+  padding: 35px 10px;
+  display: flex;
+  gap: 30px;
+  justify-content: flex-start;
+  overflow-y: scroll;
+}
+
 .center-section {
   padding: 5px;
   width: 65vw;
@@ -43,14 +69,70 @@
   justify-content: center;
   align-items: flex-start;
 }
+
+.gamedb-container {
+  align-items: center;
+  justify-content: flex-start;
+}
+.gamedb-navbar {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  font-size: 32px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(27, 27, 27);
+  width: 100%;
+}
+
+.gamedb-components-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.main-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.gamedb-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+.form-input {
+  border-radius: 10px;
+  background-color: #444;
+  border: none;
+  padding: 20px;
+  font-size: 24px;
+  color: #ff2e63;
+}
+.gamedb-navbar-links {
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 20px;
+}
+.gamedb-navbar-links:hover {
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: #ff2e63;
+}
 .search {
-  margin: 20px 20px;
+  width: 95%;
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .games-container {
   padding: 0 20px;
   height: 95%;
   width: 100%;
+  gap: 15px;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
@@ -63,12 +145,22 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 100%;
 }
 .filter {
   margin: 10px;
   border: 1px solid rgb(95, 196, 255);
-  width: 80%;
+  width: 90%;
   border-radius: 10px;
+  animation: rainbow 10s infinite;
+}
+.icons-container {
+  margin: 35px;
+  width: 90%;
+}
+.page-navigation-list {
+  list-style: none;
+  font-size: 32px;
 }
 .filter-heading {
   color: rgb(95, 196, 255);
@@ -95,20 +187,47 @@
   margin: 20px;
   font-size: 20px;
   border: none;
-  background-color: #444;
-  color: rgb(95, 196, 255);
+  background-color: rgb(95, 196, 255);
+  color: rgb(0, 0, 0);
   transition: all 0.3s ease;
   border-radius: 20px;
 }
 .submit-button:hover {
-  background-color: rgb(95, 196, 255);
-  color: black;
+  background-color: #444;
+  color: rgb(95, 196, 255);
 }
 .submit-button:active {
   background-color: rgb(19, 19, 19);
   color: white;
 }
+.submit-button:disabled,
+.submit-button[disabled] {
+  cursor: not-allowed;
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+.insert-db-btn {
+  cursor: pointer;
+  padding: 15px 20px;
+  font-size: 20px;
+  border: none;
+  background-color: rgb(95, 196, 255);
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  color: rgb(0, 0, 0);
+}
+
+.insert-db-btn:hover {
+  background-color: #444;
+  color: rgb(95, 196, 255);
+}
+.insert-db-btn:active {
+  background-color: rgb(19, 19, 19);
+  color: white;
+}
 .game-div {
+  position: relative;
   width: 100%;
   cursor: pointer;
   padding: 20px;
@@ -118,8 +237,10 @@
   gap: 40px;
   border: 1px solid rgb(95, 196, 255);
   transition: all 0.3s ease;
+  /* animation: rainbow 10s infinite; */
 }
 .searchbar {
+  background-color: rgb(83, 83, 83);
   border-radius: 10px;
   border: none;
   padding: 10px;
@@ -138,11 +259,98 @@
   transition: all 0.3s ease;
 }
 
+.wishlist-control-buttons {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  gap: 10px;
+}
+
+.wishlist-control-btn {
+  cursor: pointer;
+  font-size: 24px;
+  border: none;
+  padding: 10px;
+  background-color: rgb(95, 196, 255);
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+}
+.red {
+  background-color: #ff2e63;
+}
+.wishlist-control-btn:hover {
+  background-color: #444;
+  color: rgb(95, 196, 255);
+}
+.wishlist-control-btn:active {
+  background-color: rgb(19, 19, 19);
+  color: white;
+}
 .game-div:hover {
-  background-color: rgba(95, 196, 255, 0.151);
+  background-color: #ff2e621e;
+  border-color: #ff2e63;
+  border-radius: 20px;
+}
+.game-div:hover .game-title {
+  animation: rainbowFont 10s infinite;
 }
 .game-div:hover .game-thumbnail {
   transform: scale(1.08);
+}
+.game-div:hover .wishlist-control-buttons {
+  opacity: 1;
+}
+
+.wishlist-games-container {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+}
+.wishlist-game {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #444;
+  gap: 10px;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+.wishlist-game-thumbnail {
+  object-fit: contain;
+  width: 50px;
+}
+.wishlist-game-remove-btn {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  padding: 2px 10px;
+  background-color: transparent;
+  opacity: 0;
+  color: #fff;
+  font-size: 20px;
+  margin: 5px;
+}
+
+.wishlist-game:hover {
+  border: 1px solid rgb(95, 196, 255);
+  background-color: rgba(95, 196, 255, 0.151);
+  border-radius: 10px;
+}
+.wishlist-game:hover .wishlist-game-remove-btn {
+  opacity: 1;
+}
+.wishlist-game-remove-btn:hover {
+  background-color: #ff2e63;
+}
+.wishlist-game-remove-btn:active {
+  background-color: #000;
 }
 
 /* Media */
@@ -153,5 +361,18 @@
   }
   .game-thumbnail {
     width: 150px;
+  }
+}
+
+/* Keyframes */
+@keyframes rainbow {
+  0% {
+    border: 1px solid rgb(95, 196, 255);
+  }
+  50% {
+    border: 1px solid #ff2e63;
+  }
+  100% {
+    border: 1px solid rgb(95, 196, 255);
   }
 }

@@ -1,19 +1,31 @@
 import React, { useState, useEffect } from "react"
+import { useParams, useNavigate } from "react-router-dom"
 import Game from "./Game"
 import Axios from "axios"
 
 function CenterSection() {
+  const navigate = useNavigate()
+  const { genre } = useParams()
   const [games, setGames] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
+    console.log("running")
     const getGames = async () => {
-      Axios.get("http://localhost:3001/").then((result) => {
-        setGames(result.data)
-      })
+      if (genre === undefined) {
+        Axios.get("http://localhost:3001/").then((result) => {
+          setGames(result.data)
+        })
+      } else {
+        Axios.post("http://localhost:3001/", {
+          genre: genre,
+        }).then((result) => {
+          setGames(result.data)
+        })
+      }
     }
     getGames()
-  }, [])
+  }, [genre])
 
   return (
     <div className="center-section">
@@ -26,6 +38,14 @@ function CenterSection() {
             setSearchTerm(e.target.value)
           }}
         />
+        <button
+          className="insert-db-btn"
+          onClick={() => {
+            navigate("/gamedb")
+          }}
+        >
+          GameDB
+        </button>
       </div>
       <div className="games-container">
         {games
